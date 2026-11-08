@@ -1,20 +1,10 @@
 name: Lint & Syntax Check
-
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
-
+on: [push, pull_request]
 jobs:
   check:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
       - name: Syntax check
         run: |
           python3 -m py_compile scripts/repo-audit.py
